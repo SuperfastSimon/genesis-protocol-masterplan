@@ -1,0 +1,14 @@
+# Genesis Protocol
+*.pyc
+__pycache__/
+.env
+.env.local
+node_modules/
+.DS_Store
+*.log
+.vscode/
+.idea/
+dist/
+build/
+*.egg-info/
+.pytest_cache/
