@@ -1,0 +1,56 @@
+# Genesis Protocol — Agent Registry
+# Maps agent roles to their AutoGPT Platform graph IDs
+# Update these after creating each agent on the platform
+
+agents:
+  boss:
+    name: "Genesis Boss"
+    role: "orchestrator"
+    graph_id: null  # TODO: Set after creating Boss Agent
+    graph_version: 1
+    status: "planned"
+
+  writer:
+    name: "Genesis Writer"
+    role: "code_generator"
+    graph_id: null  # TODO: Set after creating Writer Agent
+    graph_version: 1
+    status: "planned"
+    primary_block: "AITextGeneratorBlock"
+    block_id: "1f292d4a-41a4-4977-9684-7c8d560b9f91"
+
+  builder:
+    name: "Genesis Builder"
+    role: "code_executor"
+    graph_id: null  # TODO: Set after creating Builder Agent
+    graph_version: 1
+    status: "planned"
+    primary_block: "ExecuteCodeBlock"
+    block_id: "0b02b072-abe7-11ef-8372-fb5d162dd712"
+
+  deployer:
+    name: "Genesis Deployer"
+    role: "deployment_manager"
+    graph_id: null  # TODO: Set after creating Deployer Agent
+    graph_version: 1
+    status: "planned"
+    primary_block: "GithubCreateFileBlock"
+    block_id: null  # TODO: Look up GitHub blocks
+
+  maintainer:
+    name: "Genesis Maintainer"
+    role: "health_monitor"
+    graph_id: null  # TODO: Set after creating Maintainer Agent
+    graph_version: 1
+    status: "planned"
+    primary_block: "HttpRequestBlock"
+    block_id: null  # TODO: Look up HTTP blocks
+
+# Orchestration settings
+orchestration:
+  max_iterations: 3
+  quality_threshold: 0.8
+  auto_deploy: false
+  auto_maintain: false
+  default_llm: "gpt-4o"
+  fallback_llm: "claude-3.5-sonnet"
