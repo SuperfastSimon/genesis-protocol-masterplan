@@ -9,10 +9,221 @@
 *;{margin:0;padding:0;box-sizing:border-box}
 :root{--b:#06080d;--s:#0c1017;--c:#111820;--d:rgba(255,255,255,.06);--d2:rgba(255,255,255,.1);--a:#4f8fff;--a2:#2dd4bf;--a3:#a78bfa;--w:#f59e0b;--e:#ef4444;--g:#22c55e;--t:#f0f2f5;--t2:#94a3b8;--t3:#475569;--f:Inter,system-ui;--m:"JetBrains Mono",monospace}
 body{background:var(--b);color:var(--t);font-family:var(--f);font-size:13px}
+.app{display:grid;grid-template-rows:56px 1fr;height:100vh}
+.tb{display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:var(--s);border-bottom:1px solid var(--d)}
+.br{display:flex;align-items:center;gap:12px}
+.br h1{font-size:15px;font-weight:700;background:linear-gradient(135deg,var(--a),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.vr{font-size:9px;padding:2px 7px;border-radius:20px;background:var(--a);color:#fff;font-weight:600}
+.ss{font-size:11px;color:var(--t2);display:flex;align-items:center;gap:6px}
+.dot{width:7px;height:7px;border-radius:50%;box-shadow:0 0 6px currentColor}
+.dot.gg{background:var(--g);color:var(--g)}
+.dot.yy{background:var(--w);color:var(--w)}
+.btn{padding:7px 14px;border:1px solid var(--d2);border-radius:7px;background:var(--c);color:var(--t);cursor:pointer;font-family:var(--f);font-size:11px;font-weight:500;transition:all .2s;display:inline-flex;align-items:center;gap:5px}
+.btn:hover{border-color:var(--a)}
+.btn-p{background:rgba(79,143,255,.1);border-color:rgba(79,143,255,.3);color:var(--a)}
+.btn-d{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.25);color:var(--e)}
+.btn-g{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.25);color:var(--g)}
+.spin{width:10px;height:10px;border:2px solid transparent;border-top-color:currentColor;border-radius:50%;animation:spin .5s linear infinite;display:none}
+.btn.ld .spin{display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ct{display:grid;grid-template-columns:1fr 280px;grid-template-rows:auto 1fr auto;overflow:hidden}
+.ts{display:flex;border-bottom:1px solid var(--d);background:var(--s);grid-column:1/-1}
+.tab{padding:12px 20px;font-size:12px;font-weight:500;color:var(--t2);cursor:pointer;border-bottom:2px solid transparent}
+.tab:hover{color:var(--t)}
+.tab.on{color:var(--a);border-bottom-color:var(--a)}
+.bdg{padding:1px 6px;border-radius:8px;font-size:9px;font-weight:600;background:var(--a);color:#fff}
+.pn{display:none;overflow-y:auto;padding:20px 24px;grid-column:1;grid-row:2}
+.pn.on{display:block}
+.sb{grid-column:2;grid-row:1/4;border-left:1px solid var(--d);background:var(--s);overflow-y:auto}
+.af{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:20px}
+.at{background:var(--c);border:1px solid var(--d);border-radius:14px;padding:16px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.at::before{content:"";position:absolute;top:0;left:0;right:0;height:2px}
+.at.running::before{background:var(--g);box-shadow:0 0 12px var(--g)}
+.at.idle::before{background:var(--a)}
+.at.paused::before{background:var(--w)}
+.at:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.nm{font-weight:600;font-size:13px;margin-bottom:2px}
+.rl{font-size:10px;color:var(--t3);margin-bottom:10px;text-transform:uppercase;letter-spacing:.8px}
+.sr{display:flex;justify-content:space-between;padding:3px 0;font-size:11px;color:var(--t2)}
+.sr b{color:var(--t)}
+.sc{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:600;text-transform:uppercase}
+.sc.running{background:rgba(34,197,94,.1);color:var(--g)}
+.sc.idle{background:rgba(79,143,255,.1);color:var(--a)}
+.sc.paused{background:rgba(245,158,11,.1);color:var(--w)}
+.pu{width:5px;height:5px;border-radius:50%;background:currentColor}
+.sc.running .pu{animation:pu 1.5s infinite}
+@keyframes pu{0%,100%{opacity:1}50%{opacity:.3}}
+.ac2f{display:flex;gap:4px;margin-top:10px;padding-top:10px;border-top:1px solid var(--d)}
+.ac2f .btn{flex:1;justify-content:center;padding:5px;font-size:10px}
+.mr{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:20px}
+.mt{background:var(--c);border:1px solid var(--d);border-radius:10px;padding:14px;text-align:center}
+.mt .v{font-size:24px;font-weight:700;font-family:var(--m)}
+.mt .l{font-size:10px;color:var(--t3);text-transform:uppercase;margin-top:4px}
+.mt.c1 .v{color:var(--a)}
+.mt.c2 .v{color:var(--a2)}
+.mt.c3 .v{color:var(--a3)}
+.mt.c4 .v{color:var(--g)}
+.mt.c5 .v{color:var(--w)}
+.mt.c6 .v{color:var(--e)}
+.pv{display:flex;align-items:center;justify-content:center;padding:20px;gap:0}
+.pd{background:var(--c);border:1px solid var(--d);border-radius:10px;padding:16px 22px;min-width:120px;text-align:center}
+.pd.act{border-color:var(--a);box-shadow:0 0 20px rgba(79,143,255,.15)}
+.pd.dn{border-color:var(--g)}
+.pn2{font-weight:600;font-size:12px;margin-bottom:3px}
+.ps{font-size:10px;color:var(--t3)}
+.pb{height:2px;background:var(--d);border-radius:1px;margin-top:8px;overflow:hidden}
+.pf{height:100%;transition:width .8s}
+.pc{width:36px;height:1px;background:var(--a)}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;padding:10px 12px;font-size:10px;text-transform:uppercase;color:var(--t3);border-bottom:1px solid var(--d)}
+td{padding:10px 12px;border-bottom:1px solid var(--d);font-size:12px}
+.pl{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600}
+.pl.ok{background:rgba(34,197,94,.1);color:var(--g)}
+.pl.fl{background:rgba(239,68,68,.1);color:var(--e)}
+.og{display:grid;grid-template-columns:250px 1fr;height:calc(100vh - 155px)}
+.ol{border-right:1px solid var(--d);overflow-y:auto}
+.oi{padding:12px 14px;border-bottom:1px solid var(--d);cursor:pointer}
+.oi:hover,.oi.on{background:var(--c)}
+.oi.on{border-left:2px solid var(--a)}
+.ot{font-weight:600;font-size:12px;margin-bottom:2px}
+.om{font-size:10px;color:var(--t3);display:flex;gap:8px}
+.ov{padding:18px;overflow-y:auto}
+.ov pre{background:var(--c);border:1px solid var(--d);border-radius:10px;padding:14px;font-family:var(--m);font-size:11px;line-height:1.7;white-space:pre-wrap;color:var(--t2)}
+.fh{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.cw{grid-column:1/-1;grid-row:3;border-top:1px solid var(--d);background:var(--s);display:flex;flex-direction:column;max-height:200px;min-height:40px}
+.cw.cl{max-height:40px;overflow:hidden}
+.cbr{display:flex;align-items:center;justify-content:space-between;padding:8px 18px;cursor:pointer}
+.tl{display:flex;align-items:center;gap:8px;font-weight:600;font-size:12px}
+.ld2{width:6px;height:6px;border-radius:50%;background:var(--g);animation:pu 1.5s infinite}
+.cby{flex:1;overflow-y:auto;padding:0 18px 10px;font-family:var(--m);font-size:11px;line-height:1.7}
+.lg{white-space:pre-wrap}
+.lg .t{color:var(--t3)}
+.lg .s{font-weight:500;margin:0 6px}
+.lg.info .s{color:var(--a)}
+.lg.warn{color:var(--w)}
+.lg.error{color:var(--e)}
+.lg.success{color:var(--g)}
+.sbs{padding:14px 16px;border-bottom:1px solid var(--d)}
+.sbt{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--t3);margin-bottom:8px;font-weight:600}
+.sbi{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:12px}
+.gw2{margin:6px 0}
+.gl2{display:flex;justify-content:space-between;font-size:10px;color:var(--t3);margin-bottom:3px}
+.gt{height:4px;background:var(--d);border-radius:2px;overflow:hidden}
+.gf{height:100%;border-radius:2px}
+.ai2{display:flex;align-items:flex-start;gap:10px;padding:7px 0;font-size:11px;border-bottom:1px solid var(--d)}
+.ai2:last-child{border:none}
+.ic{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+.tx{color:var(--t2)}
+.tm2{font-size:9px;color:var(--t3);margin-top:2px}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cc{background:var(--c);border:1px solid var(--d);border-radius:14px;padding:16px}
+.cc h3{font-size:12px;font-weight:600;margin-bottom:10px}
+.crw{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--d)}
+.crw:last-child{border:none}
+.tw{width:34px;height:18px;background:var(--d);border-radius:9px;cursor:pointer;position:relative;transition:background .3s}
+.tw.on{background:var(--a)}
+.tw::after{content:"";position:absolute;width:14px;height:14px;background:#fff;border-radius:50%;top:2px;left:2px;transition:left .3s}
+.tw.on::after{left:18px}
+.ci{background:var(--b);border:1px solid var(--d);border-radius:5px;padding:5px 8px;color:var(--t);font-family:var(--m);font-size:10px;outline:none}
+.cs{background:var(--b);border:1px solid var(--d);border-radius:5px;padding:5px 8px;color:var(--t);font-size:11px;outline:none}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mc{background:var(--c);border:1px solid var(--d);border-radius:14px;padding:16px}
+.mc h3{font-size:12px;font-weight:600;margin-bottom:12px}
+.mb2{display:flex;align-items:flex-end;gap:3px;height:80px}
+.mbr{flex:1;border-radius:2px 2px 0 0;opacity:.7}
+.mbr:hover{opacity:1}
+#tst{position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column-reverse;gap:6px}
+.tst{padding:10px 16px;border-radius:10px;font-size:12px;font-weight:500;animation:ti .3s;cursor:pointer}
+.tst.ok{background:rgba(34,197,94,.1);color:var(--g)}
+.tst.err{background:rgba(239,68,68,.1);color:var(--e)}
+.tst.warn{background:rgba(245,158,11,.1);color:var(--w)}
+.tst.info{background:rgba(79,143,255,.1);color:var(--a)}
+@keyframes ti{from{opacity:0;transform:translateY(20px)}}
+.mbg{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;display:none;align-items:center;justify-content:center}
+.mbg.open{display:flex}
+.mdl{background:var(--c);border:1px solid var(--d);border-radius:14px;width:600px;max-height:80vh;overflow-y:auto;padding:24px}
+.mdl h2{font-size:16px;font-weight:700;margin-bottom:14px;display:flex;justify-content:space-between}
+.mdl .x{cursor:pointer;color:var(--t3);font-size:18px}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:var(--d);border-radius:3px}
 </style>
 </head>
 <body>
-<h1>Genesis Protocol - Command Center</h1>
-<p>Full dashboard loading...</p>
+<div class="app">
+<div class="tb"><div class="br"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 2L2 8v12l12 6 12-6V8L14 2z" stroke="url(#gg)" stroke-width="1.5" fill="none"/><path d="M14 8l-6 3v6l6 3 6-3v-6l-6-3z" fill="url(#gg)" opacity=".2"/><circle cx="14" cy="14" r="3" fill="url(#gg)"/><defs><linearGradient id="gg" x1="2" y1="2" x2="26" y2="26"><stop stop-color="#4f8fff"/><stop offset="1" stop-color="#2dd4bf"/></linearGradient></defs></svg><h1>GENESIS PROTOCOL</h1><span class="vr">COMMAND CENTER</span></div>
+<div style="display:flex;align-items:center;gap:12px"><div class="ss"><span class="dot gg"></span>All Systems Operational</div><button class="btn btn-p" onclick="runPL(this)"><span class="spin"></span>&#9654; Run Pipeline</button><button class="btn btn-d" onclick="eStop()">&#9940; Stop All</button><button class="btn btn-g" onclick="hCaik()">&#10003; Health</button></div></div>
+<div class="ct">
+<div class="ts"><div class="tab on" onclick="sw(this,'st')">&#9673; Status</div><div class="tab" onclick="sw(this,'hi')">&#9207; History</div><div class="tab" onclick="sw(this,'ou')">&#9635; Outputs <span class="bdg">12</span></div><div class="tab" onclick="sw(this,'mo')">&#9678; Monitor</div><div class="tab" onclick="sw(this,'co')">&#9881; Control</div></div>
+
+<!-- STATUS PANEL -->
+<div class="pn on" id="p-st">
+<div class="mr"><div class="mt c1"><div class="v" id="m1">0</div><div class="l">Pipeline Runs</div></div><div class="mt c2"><div class="v" id="m2">0</div><div class="l">Deployments</div></div><div class="mt c3"><div class="v" id="m3">0</div><div class="l">Files Generated</div></div><div class="mt c4"><div class="v" id="m4">0%</div><div class="l">Success Rate</div></div><div class="mt c5"><div class="v" id="m5">0s</div><div class="l">Avg Duration</div></div><div class="mt c6"><div class="v" id="m6">0</div><div class="l">Errors 24h</div></div></div>
+<div class="af" id="fl"></div>
+<div style="background:var(--c);border:1px solid var(--d);border-radius:14px;overflow:hidden"><div style="display:flex;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--d);font-size:12px;font-weight:600"><span>Pipeline Flow</span><span style="color:var(--t2);font-weight:400;font-size:11px">Write &#8594; Build &#8594; Deploy &#8594; Maintain</span></div><div class="pv" id="pv"></div></div>
+</div>
+
+<!-- HISTORY PANEL -->
+<div class="pn" id="p-hi">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><h2 style="font-size:16px;font-weight:700">Run History</h2><div style="display:flex;gap:6px"><input class="ci" style="width:180px" placeholder="Search" id="hs" oninput="rH()"><button class="btn" onclick="hF('all')">All</button><button class="btn" onclick="hF('success')">OK</button><button class="btn" onclick="hF('failed')">Fail</button></div></div>
+<div style="background:var(--c);border:1px solid var(--d);border-radius:14px;overflow:hidden"><table><thead><tr><th>Repo</th><th>Agent</th><th>Branch</th><th>Status</th><th>Duration</th><th>Time</th><th>Commit</th></tr></thead><tbody id="hb"></tbody></table></div>
+</div>
+
+<!-- OUTPUTS PANEL -->
+<div class="pn" id="p-ou" style="padding:0"><div class="og"><div class="ol" id="oL"></div><div class="ov" id="oV"></div></div></div>
+
+<!-- MONITOR PANEL -->
+<div class="pn" id="p-mo"><div class="mg"><div class="mc"><h3>Throughput 24h</h3><div class="mb2" id="ch1"></div></div><div class="mc"><h3>Error Rate</h3><div class="mb2" id="ch2"></div></div><div class="mc"><h3>Agent Performance</h3><div id="pt"></div></div><div class="mc"><h3>Token Usage</h3><div class="mb2" id="ch3"></div></div><div class="mc" style="grid-column:1/-1"><h3>System Metrics</h3><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px" id="lm"></div></div></div></div>
+
+<!-- CONTROL PANEL -->
+<div class="pn" id="p-co"><div class="cg"><div class="cc"><h3>Agent Config</h3><div id="ca"></div></div><div class="cc"><h3>Scheduling</h3><div id="cr"></div></div><div class="cc"><h3>Global Settings</h3><div class="crw"><span style="font-size:12px">Default LLM: Claude Sonnet 4</span><div class="tw on" onclick="this.classList.toggle('on')"></div></div><div class="crw"><span style="font-size:12px">Auto-Deploy on Build</span><div class="tw on" onclick="this.classList.toggle('on')"></div></div><div class="crw"><span style="font-size:12px">Auto-Fix on Fail</span><div class="tw on" onclick="this.classList.toggle('on')"></div></div><div class="crw"><span style="font-size:12px">GitHub: SuperfastSimon</span><div class="tw on" onclick="this.classList.toggle('on')"></div></div></div><div class="cc"><h3>API Keys</h3><div id="ck"></div></div></div></div>
+
+<!-- SIDEBAR -->
+<div class="sb"><div class="sbs"><div class="sbt">System Health</div><div class="sbi"><span>GitHub API</span><span class="dot gg"></span></div><div class="sbi"><span>Anthropic</span><span class="dot gg"></span></div><div class="sbi"><span>OpenAI</span><span class="dot gg"></span></div><div class="sbi"><span>Groq</span><span class="dot gg"></span></div><div class="sbi"><span>E2B Sandbox</span><span class="dot gg"></span></div><div class="sbi"><span>Bannerbear</span><span class="dot yy"></span></div></div>
+<div class="sbs"><div class="sbt">Resources</div><div class="gw2"><div class="gl2"><span>Tokens</span><span>34%</span></div><div class="gt"><div class="gf" style="width:34%;background:var(--a)"></div></div></div><div class="gw2"><div class="gl"><span>Memory</span><span>48%</span></div><div class="gt"><div class="gf" style="width:48%;background:var(--a3)"></div></div></div><div class="gw2"><div class="gl2"><span>Sandboxes</span><span>2/5</span></div><div class="gt"><div class="gf" style="width:40%;background:var(--a2)"></div></div></div><div style="display:flex;justify-content:space-between;padding:8px 0;font-size:12px"><span style="color:var(--t3)">Uptime</span><span style="font-family:var(--m);color:var(--g)" id="up">00:00:00</span></div></div>
+<div class="sbs"><div class="sbt">Activity</div><div id="acd"></div></div></div>
+
+<!-- CONSOLE -->
+<div class="cw" id="cn"><div class="cbr" onclick="document.getElementById('cn').classList.toggle('cl')"><div class="tl"><span class="ld2"></span>Live Console</div><div style="display:flex;gap:6px;align-items:center"><select class="cs" id="fa" onchange="fC()" onclick="event.stopPropagation()"><option value="all">All Agents<option>Boss<option>Writer<option>Builder<option>Deployer<option>Maintainer</select><select class="cs" id="fv" onchange="fC()" onclick="event.stopPropagation()"><option value="all">All Levels<option value="info">Info<option value="warn">Warn<option value="error">Error<option value="success">Success</select><button class="btn" style="padding:3px 8px;font-size:10px" onclick="event.stopPropagation();document.getElementById('cb').innerHTML=''">Clear</button></div></div><div class="cby" id="cb"></div></div>
+</div></div>
+<div id="tst"></div>
+<div class="mbg" id="md"><div class="mdl"><h2 id="mt2">Details<span class="x" onclick="document.getElementById('md').classList.remove('open')">&times;</span></h2><div id="mb3"></div></div></div>
+
+<script>
+var AG=[{id:'boss',n:'Boss Agent',r:'Orchestrator',s:'running',ru:312,ok:98.7,av:'11.2s',la:'1m ago',au:1,cr:'*/5 * * * *'},{id:'writer',n:'Writer Agent',r:'Code Architect',s:'idle',ru:245,ok:96.3,av:'32.4s', la:'4m ago',au:1,cr:'*/10 * * * *'},{id:'builder',n:'pBuilder Agent',r:'E2B Sandbox',s:'running',ru:198,ok:93.1,av:'48.7s',la:'2m ago',au:1,cr:'*/15 * * * *'},{id:'deployer',n:'Deployer Agent',r:'GitHub Push',s:'idle',ru:176,ok:95.2,av:'16.3s',la:'12m ago',au:0,cr:''},{id:'maintainer',n:'Maintainer Agent',r:'Self-Heal',s:'idle',ru:134,ok:97.8,av:'7.4s',la:'20m ago',au:1,cr:'0 * * * *'}];
+var DH=[{rp:'genesis-dashboard',ag:'Deployer',br:'main',st:'success',du:'34.2s',tm:'2m ago',cm:'a3f7b2c'},{rp:'concept-studio-api',ag:'Deployer',br:'develop',st:'success',du:'28.1s',tm:'1h ago',cm:'e8d4f1a'},{rp:'auth-module',ag:'Writer',br:'main',st:'success',du:'42.7s',tm:'2h ago',cm:'b5c3d1e'},{rp:'writer-agent-v2',ag:'Builder',br:'main',st:'failed',du:'127.4s', tm:'3h ago',cm:'b2c9e7d'},{rp:'health-monitor',ag:'Deployer',br:'main',st:'success',du:'18.9s', tm:'5h ago',cm:'f1a3b5c'},{rp:'sandbox-manager',ag:'Builder',br:'feat/v2',pt:'failed',du:'300s',tm:'6h ago',cm:'c7d2e9f'},{rp:'llm-router',ag:'Deployer',br:'main',st:'success',du:'22.3s',tm:'Yesterday',cm:'d4e6f8a'}];
+var OU=[{id:1,t:'AuthModule.tsx',a:'Writer',lg:'TypeScript',ln:342,c:"import { useState } from 'react';\n\nexport const AuthModule = () => {\n  const [user, setUser] = useState(null);\n  // Full auth logic...342 lines\n};"},{id:2,t:'api-routes.py',a:'Writer',lg:'Python',ln:187,c:"from fastapi import FastAPI\n\napp = FastAPI(title='Genesis API')\n\n@app.post('/projects')\nasync def create_project(data):\n    return await boss_agent.run(data)"},{id:3,t:'Dockerfile',a:'Builder',lg:'Docker',ln:28,c:"FROM node:20-alpine\nWORKDIR /app\nCOPY . .\nRUN npm ci && npm run build\nEXPOSE 3000\nCMD [\"npm\",\"start\"]"},{id:4,t:'deploy.sh',a:'Deployer',lg:'Bash',ln:45,c:"#!/bin/bash\nset -euo pipefail\ngit clone --depth 1 $REPO /tmp/d\nvercel --prod --yes"},{id:5,t:'health-check.py',a:'Maintainer',lg:'Python',ln:96,c:"import httpx\n\nasync def check():\n  r = await httpx.get(url)\n  if r.status_code!=200: await self_heal()"}];
+var PP=[{n:'Write',i:'&#9997;',p:0,s:'Idle'},{n:'Build',i:'&#9874;',p:0,s:'Idle'},{n:'Deploy',i:'&#8599;',p:0,s:'Idle'},{n:'Maintain',i:'&#9881;',p:100,s:'Monitoring'}];
+var LG=[{l:'info',a:'Boss',m:'Pipeline #312 started'},{l:'info',a:'Writer',m:'Generating AuthModule.tsx'},{l:'success',a:'Writer',m:'Code gen done - 342 lines'},{l:'info',a:'Builder',m:'E2B sandbox init...'},{l:'success',a:'Builder',m:'Build OK - 0 errors'},{l:'warn',a:'Builder',m:'Unused import utils.ts:14'},{l:'info',a:'Deployer',m:'Push to SuperfastSimon/genesis'},{l:'success',a:'Deployer',m:'Live: genesis-dash.vercel.app'},{l:'info',a:'Maintainer',m:'Health check 4 endpoints'},{l:'success',a:'Maintainer',m:'All nominal'},{l:'error',a:'Builder',m:'Sandbox timeout - retry'},{l:'success',a:'Boss',m:'Pipeline #312 done 78.4s'}];
+var KY=[{n:'GitHub',k:'ghp_****x5Rt'},{n:'Anthropic',k:'sk-ant-****mK2'},{n:'OpenAI',k:'sk-****pQ7'},{n:'Groq',k:'gsk_****nL4'},{n:'E2B',k:'e2b_****vH9'},{n:'Bannerbear',k:'bb_****dR1'}];
+var hf2='all',ut=0;
+var $=function(id){return document.getElementById(id)};
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function toast(m,t){var e=document.createElement('div');e.className='tst '+t;e.textContent=m;e.onclick=function(){e.remove()};$('tst').appendChild(e);setTimeout(function(){if(e.parentNode)e.remove()},3500)}
+function sw(el,id){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on')});el.classList.add('on');document.querySelectorAll('.pn').forEach(function(p){p.classList.remove('on')});$('p-'+id).classList.add('on')}
+function rF(){var h='';AG.forEach(function(a){h+='<div class="at '+a.s+'" onclick="oA(\''+a.id+'\')">'+'<div style="display:flex;justify-content:space-between"><div><div class=nm>'+a.n+'</div><div class=rl>'+a.r+'</div></div><div class="sc '+a.s+'"><span class=pu></span>'+a.s+'</div></div><div class=sr><span>Runs</span><b>'+a.ru+'</b></div><div class=sr><span>Success</span><b>'+a.ok+'%</b></div><div class=sr><span>Avg</span><b>'+a.av+'</b></div><div class=sr><span>Last</span><b>'+a.la+'</b></div><div class=ac2f><button class="btn btn-g" onclick="event.stopPropagation();rA(\''+a.id+'\')">&
+#9654;</button><button class=btn onclick="event.stopPropagation();tA(\''+a.id+'\')">'+(a.s==='paused'?'&#9654;':'&#9208;')+'</button></div></div>'});$('fl').innerHTML=h}
+function rP(){var h='';PP.forEach(function(s,i){if(i)h+='<div class=pc></div>';var cls=s.p>0&&s.p<100?'act':s.p>=100?'dn':'';h+='<div class="pd '+cls+'"><div class=pn2>'+s.i+' '+s.n+'</div><div class=ps>'+s.s+'</div><div class=pb><div class=pf style="width:'+s.p+'%;background:'+(s.p>=100?'var(--g)':'var(--a)')+'"></div></div></div>'});$('pv').innerHTML=h}
+function rH(){var q=$('hs')?$('hs').value.toLowerCase():'';var h='';DH.forEach(function(d){if((hf2==='all'||d.st===hf2)&&d.rp.indexOf(q)>=0){h+='<tr><td style=font-weight:500>'+d.rp+'</td><td style="color:var(--t2)">'+d.ag+'</td><td style="font-family:var(--m);font-size:11px">'+d.br+'</td><td><span class="pl '+(d.st==='success'?'ok':'fl')+'">'+d.st+'</span></td><td style="font-family:var(--m);font-size:11px">'+d.du+'</td><td style="color:var(--t3)">'+d.tm+'</td><td style="font-family:var(--m);font-size:11px;color:var(--t3)">'+d.cm+'</td></tr>'}});$('hb').innerHTML=h}
+function hF(f){hf2=f;rH()}
+function rO(){var h='';OU.forEach(function(o,i){h+='<div class="oi '+(i===0?'on':'')+'" onclick="vO('+o.id+',this)"><div class=ot>'+o.t+'</div><div class=om><span>'+o.a+'</span><span>'+o.lg+'</span><span>'+o.ln+' lines</span></div></div>'});$('oL').innerHTML=h;vO(1,$('oL').firstChild)}
+function vO(id,el){document.querySelectorAll('.oi').forEach(function(x){x.classList.remove('on')});if(el)el.classList.add('on');var o;OU.forEach(function(x){if(x.id===id)o=x});if(!o)return;$('oV').innerHTML='<div class=fh><span style="font-family:var(--m);font-size:12px;font-weight:500">'+o.t+'</span><div style="display:flex;gap:6px"><span class="pl ok">'+o.lg+'</span><span style="font-size:11px;color:var(--t3)">'+o.ln+' lines</span></div></div><pre>'+esc(o.c)+'</pre>'}
+function rM(){var mk=function(id,c){var h='';for(var i=0;i<24;i++){h+='<div class=mbr style="height:'+(Math.random()*90+10)+'%;background:'+c+'"></div>'}$(id).innerHTML=h};mk('ch1','var(--a)');mk('ch2','var(--e)');mk('ch3','var(--a3)');var pt='<table><thead><tr><th>Agent</th><th>Runs</th><th>Rate</th><th>Avg</th></tr></thead><tbody>';AG.forEach(function(a){pt+='<tr><td>'+a.n+'</td><td>'+a.ru+'</td><td><span class="pl ok">'+a.ok+'%</span></td><td>'+a.av+'</td></tr>'});pt+='</tbody></table>';$('pt').innerHTML=pt;$('lm').innerHTML=[{l:'CPU',v:'21%',c:'var(--a)'},{l:'Memory',v:'48%',c:'var(--a3)'},{l:'Disk',v:'12%',c:'var(--a2)'},{l:'Net',v:'3.2MB/s',c:'var(--g)'}].map(function(m){return'<div style=text-align:center><div style="font-size:22px;font-weight:700;font-family:var(--m);color:'+m.c+'">'+m.v+'</div><div style="font-size:10px;color:var(--t3);text-transform:uppercase;margin-top:2px">'+m.l+'</div></div>'}).join('')}
+function rC(){$('ca').innerHTML=AG.map(function(a){return'<div class=crw><span style=font-size:12px>'+a.n+'</span><div style="display:flex;gap:8px;align-items:center"><span style="font-size:10px;color:var(--t3)">Auto</span><div class="tw '+(a.au?'on':'')+'" onclick="this.classList.toggle(\'on\')"</div></div></div>'}).join('');$('cr').innerHTML=AG.map(function(a){return'<div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0"><span style=font-size:12px>'+a.n+'</span><input class=ci style="width:130px;text-align:center" value="'+a.cr+'"></div>'}).join('');$('ck').innerHTML=KY.map(function(k){return'<div class=crw><span style=font-size:12px>'+k.n+'</span><span style="font-family:var(--m);font-size:10px;color:var(--t3)">'+k.k+'</span></div>'}).join('')}
+function rAc(){$('acd').innerHTML=[{i:'&#9650;',t:'genesis-dashboard deployed',tm:'2m',bg:'rgba(34,197,94,.1)'},{i:'&#9997;',t:'Writer: AuthModule.tsx',tm:'4m',bg:'rgba(79,143,255,.1)'},{i:'&#10060;',t:'writer-v2 build failed',tm:'3h',bg:'rgba(239,68,68,.1)'},{i:'&#9874;',t:'Builder compiled concept-api',tm:'1h',bg:'rgba(45,212,191,.1)'},{i:'&#9881;',t:'Maintainer healed endpoint',tm:'5h',bg:'rgba(167,139,250,.1)'},{i:'&#9889;',t:'Boss task #311',tm:'6h',bg:'rgba(245,158,11,.1)'}].map(function(a){return'<div class=ai2><div class=ic style="background:'+a.bg+'">'+a.i+'</div><div><div class=tx>'+a.t+'</div><div class=tm2>'+a.tm+' ago</div></div></div>'}).join('')}
+function aL(l,a,m){var b=$('cb'),now=new Date(),ts=now.toTimeString().substr(0,8)+'.'+String(now.getMilliseconds()).padStart(3,'0'),d=document.createElement('div');d.className='lg '+l;d.setAttribute('data-level',l);d.setAttribute('data-agent',a);d.innerHTML='<span class=t>'+ts+'</span><span class=s>['+a+']</span>'+m;var af=$('fa').value,lf=$('fv').value;if(af!=='all'&&a!==af)d.style.display='none';if(lf!=='all'&&l!==lf)d.style.display='none';b.appendChild(d);b.scrollTop=b.scrollHeight}
+function fC(){var af=$('fa').value,lf=$('fv').value;document.querySelectorAll('.lg').forEach(function(el){el.style.display=(af==='all'||el.getAttribute('data-agent')===af)&&(lf==='all'||el.getAttribute('data-level')===lf)?'':'none'})}
+function oA(id){var a;AG.forEach(function(x){if(x.id===id)a=x});$('mt2').innerHTML=a.n+'<span class=x onclick="document.getElementById(\'md\').classList.remove(\'open\')">&times;</span>';var h='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px"><div class="mt c1"><div class=v>'+a.ru+'</div><div class=l>Runs</div></div><div class="mt c4"><div class=v>'+a.ok+'%</div><div class=l>Success</div></div><div class="mt c5"><div class=v>'+a.av+'</div><div class=l>Avg Time</div></div></div><table><thead><tr><th>#</th><th>Status</th><th>Duration</th><th>Time</th></tr></thead><tbody>';for(var i=0;i<6;i++){var ok=Math.random()>.15;h+='<tr><td>#'+(a.ru-i)+'</td><td><span class="pl '+(ok?'ok':'fl')+'">'+(ok?'success':'failed')+'</span></td><td>'+(Math.random()*50+5).toFixed(1)+'s</td><td>'+(i===0?a.la:i+'h ago')+'</td></tr>'}h+='</tbody></table>';$('mb3').innerHTML=h;$('md').classList.add('open')}
+function rA(id){var a;AG.forEach(function(x){if(x.id===id)a=x});a.s='running';a.ru++;a.la='now';rF();toast(a.n+' triggered','ok');aL('info',a.n.split(' ')[0],'Run triggered');setTimeout(function(){a.s='idle';a.la='1m ago';rF();aL('success',a.n.split(' ')[0],'Done')},4000)}
+function tA(id){var a;AG.forEach(function(x){if(x.id===id)a=x});a.s=a.s==='paused'?'idle':'paused';rF();toast(a.n+' '+a.s,a.s==='paused'?'warn':'info')}
+function runPL(btn){btn.classList.add('ld');toast('Pipeline triggered','info');aL('info','Boss','Full pipeline go');PP[0].p=10;PP[0].s='Writing...';AG[0].s='running';AG[1].s='running';rF();rP();var iv=setInterval(function(){PP.forEach(function(p){if(p.p>0&&p.p<100)p.p=Math.min(100,p.p+Math.random()*15)});rP()},800);setTimeout(function(){PP[0].p=100;PP[0].s='Done';PP[1].p=10;PP[1].s='Building...';AG[1].s='idle';AG[2].s='running';rF();aL('success','Writer','Code gen complete')},3000);setTimeout(function(){PP[1].p=100;PP[1].s='Done';PP[2].p=10;PP[2].s='Deploying...';AG[2].s='idle';AG[3].s='running';rF();aL('success','Builder','Build OK')},6000);setTimeout(function(){clearInterval(iv);PP[2].p=100;PP[2].s='Done';AG.forEach(function(a){if(a.s==='running')a.s='idle'});rF();rP();btn.classList.remove('ld');toast('Pipeline complete!','ok');aL('success','Boss','Pipeline done 82.3s');setTimeout(function(){PP.forEach(function(p,i){if(i<3){p.p=0;p.s='Idle'}});rP()},3000)},9000)}
+function eStop(){AG.forEach(function(a){a.s='paused'});rF();toast('ALL STOPPED','err');aL('error','Boss','EMERGENCY STOP')}
+function hChk(){toast('Health checking...','info');aL('info','Maintainer','Check initiated');setTimeout(function(){toast('All nominal','ok');aL('success','Maintainer','All healthy')},2000)}
+function aM(){var c=function(id,v){var cur=0,st=Math.max(1,Math.ceil(v/20)),iv=setInterval(function(){cur+=st;if(cur>=v){cur=v;clearInterval(iv)}$(id).textContent=cur},25)};c('m1',312);c('m2',176);c('m3',1847);$('m4').textContent='96.2%';$('m5').textContent='34.7s';$('m6').textContent='4'}
+setInterval(function(){var m=LG[Math.floor(Math.random()*LG.length)];aL(m.l,m.a,m.m)},5000);
+setInterval(function(){ut++;$('up').textContent=String(Math.floor(ut/3600)).padStart(2,'0')+':'+String(Math.floor((ut%3600)/60)).padStart(2,'0')+':'+String(ut%60).padStart(2,'0')},1000);
+rF();rP();rH();rO();rM();rC();rAc();aM();
+for(var i=0;i<6;i++)aL(LG[i].l,LG[i].a,LG[i].m);
+toast('Genesis Command Center loaded','ok');
+</script>
 </body>
 </html>
