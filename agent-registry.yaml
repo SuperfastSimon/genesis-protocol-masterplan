@@ -1,0 +1,91 @@
+# Genesis Protocol — Agent Registry (LIVE)
+# All graph_ids and library_ids are REAL AutoGPT Platform IDs
+# Last updated: 2025-01-20
+
+agents:
+  concept_studio:
+    name: "Business Concept Studio"
+    role: "concept_generator"
+    graph_id: "cd0870a3-0a0f-425e-91cf-041b84548ef7"
+    library_id: "6387fd67-6aea-4090-9cca-fed50f747cdc"
+    graph_version: 1
+    status: "active"
+
+  boss:
+    name: "Genesis Boss Agent"
+    role: "orchestrator"
+    graph_id: "63421075-a04d-458d-a845-082a44a8d522"
+    library_id: "d5f31b2a-d683-4748-a0e3-acbb9ffde653"
+    graph_version: 1
+    status: "active"
+    runs_completed: 2
+
+  writer:
+    name: "Code Writer Agent"
+    role: "code_generator"
+    graph_id: "825855d2-1af3-4915-b26d-71bd65ac7c45"
+    library_id: "a2627a06-0d4a-4d9b-bf61-ab428f05c04f"
+    graph_version: 1
+    status: "active"
+    runs_completed: 3
+
+  code_architect:
+    name: "Code Architect Agent"
+    role: "code_architect"
+    graph_id: "9d4cedb8-d047-4921-ac79-cf636e761b99"
+    library_id: "ecbd1bbb-7992-452d-8901-aeaa7205fa55"
+    graph_version: 1
+    status: "ready"
+    runs_completed: 0
+
+  builder:
+    name: "Genesis Builder Agent"
+    role: "code_executor"
+    graph_id: "af73c435-ab1d-4fed-beca-e8e5b9b5b95e"
+    library_id: "96c9f3ce-b970-4c50-bf2e-37d089d13422"
+    graph_version: 1
+    status: "ready"
+    runs_completed: 0
+
+  deployer:
+    name: "Genesis Deployment Agent"
+    role: "deployment_manager"
+    graph_id: "da52be89-4c37-4c38-82ce-bc5018771846"
+    library_id: "56b3ad38-fa86-4757-978d-0671d984e513"
+    graph_version: 1
+    status: "ready"
+    runs_completed: 0
+
+  maintainer:
+    name: "Genesis Protocol Maintainer"
+    role: "health_monitor"
+    graph_id: "c1fdd73c-644f-4234-94fd-f96f0a74ef6f"
+    library_id: "d4488f6d-b2ec-43c3-b16f-2aaeecc577d6"
+    graph_version: 1
+    status: "ready"
+    runs_completed: 0
+
+  health_monitor:
+    name: "Website Health Monitor"
+    role: "website_monitor"
+    graph_id: "bdd9d635-3694-4969-9b9f-e8e76ee7a269"
+    library_id: "613bad37-88a5-4bb9-99be-9b31876025b8"
+    graph_version: 1
+    status: "ready"
+    runs_completed: 0
+
+orchestration:
+  max_iterations: 3
+  quality_threshold: 0.8
+  auto_deploy: false
+  auto_maintain: false
+  default_llm: "claude-sonnet-4-20250514"
+  fallback_llm: "gpt-4o"
+
+api:
+  base_url: "https://backend.agpt.co/external-api"
+  endpoints:
+    list_agents: "GET /v1/agents"
+    execute_agent: "POST /v1/agents/{agent_id}/execute"
+    get_executions: "GET /v1/agents/{agent_id}/executions"
+    get_execution_result: "GET /v1/agents/{agent_id}/executions/{execution_id}"
