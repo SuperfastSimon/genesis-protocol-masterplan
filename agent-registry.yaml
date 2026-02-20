@@ -1,6 +1,6 @@
 # Genesis Protocol — Agent Registry (LIVE)
 # All graph_ids and library_ids are REAL AutoGPT Platform IDs
-# Last updated: 2025-01-20
+# Last updated: 2025-07-20
 
 agents:
   concept_studio:
@@ -28,6 +28,8 @@ agents:
     graph_version: 1
     status: "active"
     runs_completed: 3
+    primary_block: "AITextGeneratorBlock"
+    block_id: "1f292d4a-41a4-4977-9684-7c8d560b9f91"
 
   code_architect:
     name: "Code Architect Agent"
@@ -46,6 +48,8 @@ agents:
     graph_version: 1
     status: "ready"
     runs_completed: 0
+    primary_block: "ExecuteCodeBlock"
+    block_id: "0b02b072-abe7-11ef-8372-fb5d162dd712"
 
   deployer:
     name: "Genesis Deployment Agent"
@@ -55,6 +59,7 @@ agents:
     graph_version: 1
     status: "ready"
     runs_completed: 0
+    primary_block: "GitHubCreateFileBlock"
 
   maintainer:
     name: "Genesis Protocol Maintainer"
@@ -64,6 +69,8 @@ agents:
     graph_version: 1
     status: "ready"
     runs_completed: 0
+    primary_block: "SendWebRequestBlock"
+    block_id: "6595ae1f-b924-42cb-9a41-551a0611c4b4"
 
   health_monitor:
     name: "Website Health Monitor"
@@ -74,6 +81,7 @@ agents:
     status: "ready"
     runs_completed: 0
 
+# Orchestration settings
 orchestration:
   max_iterations: 3
   quality_threshold: 0.8
@@ -82,10 +90,12 @@ orchestration:
   default_llm: "claude-sonnet-4-20250514"
   fallback_llm: "gpt-4o"
 
+# AutoGPT External API configuration
 api:
   base_url: "https://backend.agpt.co/external-api"
+  auth_header: "x-api-key"
   endpoints:
     list_agents: "GET /v1/agents"
-    execute_agent: "POST /v1/agents/{agent_id}/execute"
-    get_executions: "GET /v1/agents/{agent_id}/executions"
-    get_execution_result: "GET /v1/agents/{agent_id}/executions/{execution_id}"
+    execute_agent: "POST /v1/agents/{library_id}/execute"
+    get_executions: "GET /v1/agents/{library_id}/executions"
+    get_execution_result: "GET /v1/agents/{library_id}/executions/{execution_id}"
